@@ -37,7 +37,7 @@ func Write2Sqlite(pros []*yanyue.Product) {
 		defer rows.Close()
 		if rows.Next() {
 			_, err := tx.Exec(updateSql, pro.Name, pro.Brand.Id, pro.Brand.Name, pro.BarPrice, pro.PackPrice,
-				pro.CommentNum, pro.PingNum, pro.ComSore, pro.ScoreWei, pro.ScoreBao, pro.ScoreJia, pro.Id)
+				pro.CommentNum, pro.PingNum, pro.ComSore*10, pro.ScoreWei*10, pro.ScoreBao*10, pro.ScoreJia*10, pro.Id)
 			if err != nil {
 				log.Errorf("update cigarette error, id = %d,error: %s\n", pro.Id, err.Error())
 			} else {
@@ -45,7 +45,7 @@ func Write2Sqlite(pros []*yanyue.Product) {
 			}
 		} else {
 			_, err := tx.Exec(insertSql, pro.Id, pro.Name, pro.Brand.Id, pro.Brand.Name, pro.BarPrice, pro.PackPrice,
-				pro.CommentNum, pro.PingNum, pro.ComSore, pro.ScoreWei, pro.ScoreBao, pro.ScoreJia)
+				pro.CommentNum, pro.PingNum, pro.ComSore*10, pro.ScoreWei*10, pro.ScoreBao*10, pro.ScoreJia*10)
 			if err != nil {
 				log.Errorf("insert cigarette error, id = %d,error: %s\n", pro.Id, err.Error())
 			} else {

@@ -1,17 +1,26 @@
 package main
 
 import (
+	"C"
 	"fmt"
+	"os"
 	"unicode"
 )
 
-func main() {
-	str := "Jimmy: hello,李明博，이명박!"
-	fmt.Println(str)
-
+//export ContainsChinese
+func ContainsChinese(str string) bool {
+	if len(str) == 0 {
+		os.Exit(1)
+	}
 	for _, r := range str {
 		if unicode.Is(unicode.Han, r) {
-			fmt.Print(string(r))
+			return true
 		}
 	}
+	return false
+}
+
+func main() {
+	fmt.Printf("string is %s\n", os.Args[1])
+	fmt.Println("contains han char: ", ContainsChinese(os.Args[1]))
 }

@@ -11,7 +11,7 @@ var ctx = context.Background()
 
 const AAID_KEY_PREFIX = "AAID:"
 
-func main() {
+func main1() {
 	redisClient := redis.NewClient(&redis.Options{
 		Addr:     "127.0.0.1:6379",
 		Password: "some password",

@@ -4,5 +4,5 @@ package main
 //	aaidTask
 //	directDelTask
 func main() {
-	bulkNameTask()
+	SeriallyRenameTask()
 }
